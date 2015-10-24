@@ -11,5 +11,12 @@ div {
 
 img {
     float: left;
-    max-height: 589px;
+    max-height: 300px;
+}
+
+
+@media (min-width:500px) {
+    img {
+        max-height: 589px;
+    }
 }
