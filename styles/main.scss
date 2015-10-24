@@ -1,12 +1,15 @@
-body {
+html, body {
     background: #000;
-    width: 9000px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+div {
+    width: 50200px;
 }
 
 img {
     float: left;
-    max-width: 500px;
-    min-width:500px;
-    max-height: 333px;
-    min-height: 333px;
+    max-height: 589px;
 }

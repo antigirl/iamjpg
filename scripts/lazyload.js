@@ -7,6 +7,7 @@ var imagesArray = Array.prototype.slice.call(document.getElementsByClassName('ia
 var loadImage = function() {
     imagesArray.forEach(function (el) {
         if(isElementVisible(el)) {
+            console.log(el.src,  '=> ', isElementVisible(el));
             respond.setSrc(el);
         }
 	});
@@ -17,6 +18,7 @@ function init() {
     //addEventListener('load', debounce(loadImage, 1000), false);
     addEventListener('scroll', debounce(loadImage, 50), false);
     addEventListener('resize', debounce(loadImage, 50), false);
+    document.body.addEventListener('scroll', debounce(loadImage, 50), false);
 }
 
 module.exports = {
