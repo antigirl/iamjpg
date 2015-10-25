@@ -18,7 +18,7 @@ function init() {
     //addEventListener('load', debounce(loadImage, 1000), false);
     addEventListener('scroll', debounce(loadImage, 50), false);
     addEventListener('resize', debounce(loadImage, 50), false);
-    document.body.addEventListener('scroll', debounce(loadImage, 50), false);
+    document.getElementsByClassName('photo-wrapper')[0].addEventListener('scroll', debounce(loadImage, 50), false);
 }
 
 module.exports = {

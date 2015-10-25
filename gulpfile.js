@@ -73,16 +73,20 @@ gulp.task('updateImageWidths', function () {
 });
 
 function updateImageWidths(theFile) {
+    var totalWidth = 0;
+    var imageMarginRight = 3;
+    var marginLeftFirst = 270;
     jsdom.env(
       theFile,
       function (err, window) {
           var imagesArray = Array.prototype.slice.call(window.document.getElementsByClassName('iamjpg'), '');
-          var totalWidth = 0;
           imagesArray.forEach(function (el, i) {
-              totalWidth += sizeOf('./dist/'+el.getAttribute('src')).width;
+              var imagePath = el.getAttribute('src').replace('dist/', '').replace('lqt/', '');
+              totalWidth += sizeOf(imagePath).width + imageMarginRight;
+              console.log(imagePath + ' =>'+ sizeOf(imagePath).width);
           });
           var data = fs.readFileSync(theFile, 'utf-8');
-          var newValue = data.replace(/containerWidth: .*/, 'containerWidth: ' + totalWidth);
+          var newValue = data.replace(/containerWidth: .*/, 'containerWidth: ' + parseInt(totalWidth + marginLeftFirst));
           fs.writeFileSync(theFile, newValue, 'utf-8');
           console.log('imageWidth updated for template ' + theFile);
       }
