@@ -8,6 +8,10 @@ var browserify = require('browserify');
 var gm = require('gulp-gm');
 var imagemin = require('gulp-imagemin');
 var clean = require('gulp-clean');
+var jsdom = require('jsdom');
+var sizeOf = require('image-size');
+var fs = require('fs');
+var path = require('path');
 
 var Metalsmith = require('metalsmith');
 var templates = require('metalsmith-templates');
@@ -43,13 +47,47 @@ gulp.task('metalsmith', ['cleanTemplates'], function() {
             if (err) {
                 return console.log(err)
             }
-            console.log('static site pages generated');
+            console.log('static pages generated');
         })
 });
 
 gulp.task('metalsmith:watch', function () {
   gulp.watch(['./src/*.html','./layouts/*.html'], ['metalsmith'])
 });
+
+gulp.task('updateImageWidths:watch', function () {
+  gulp.watch(['./src/*.html'])
+  .on('change', function(file) {
+      var theFile = file.path;
+      updateImageWidths(theFile);
+  });
+});
+
+gulp.task('updateImageWidths', function () {
+    var src = __dirname+'/src';
+    fs.readdir(src, function(err, files) {
+        files.map(function (file) {
+            updateImageWidths(path.join(src, file));
+        });
+    });
+});
+
+function updateImageWidths(theFile) {
+    jsdom.env(
+      theFile,
+      function (err, window) {
+          var imagesArray = Array.prototype.slice.call(window.document.getElementsByClassName('iamjpg'), '');
+          var totalWidth = 0;
+          imagesArray.forEach(function (el, i) {
+              totalWidth += sizeOf('./dist/'+el.getAttribute('src')).width;
+          });
+          var data = fs.readFileSync(theFile, 'utf-8');
+          var newValue = data.replace(/containerWidth: .*/, 'containerWidth: ' + totalWidth);
+          fs.writeFileSync(theFile, newValue, 'utf-8');
+          console.log('imageWidth updated for template ' + theFile);
+      }
+    );
+}
 
 gulp.task('sass', function () {
   gulp.src('./styles/styles.scss')
@@ -101,6 +139,7 @@ gulp.task('images-mobile', function() {
     .pipe(gulp.dest('./dist/images/mobile'));
 });
 
-gulp.task('default', ['connect', 'metalsmith:watch', 'html:watch','sass:watch','scripts:watch']);
-gulp.task('build', ['metalsmith','sass','scripts','images-min','images-mobile','images-lqt']);
+
+gulp.task('default', ['connect', 'updateImageWidths:watch', 'metalsmith:watch', 'html:watch','sass:watch','scripts:watch']);
+gulp.task('build', ['images-min','images-mobile','images-lqt', 'updateImageWidths', 'metalsmith','sass','scripts']);
 gulp.task('images', ['images-min','images-mobile','images-lqt']);

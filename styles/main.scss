@@ -1,19 +1,44 @@
-html, body {
-    background: #000;
+body {
+    background: #fff;
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+.wrapper {
+    position: relative;
+    height: 589px;
     width: 100%;
     height: 100%;
     overflow: scroll;
 }
 
-div {
-    width: 50200px;
+.photo-container {
+    width: 100%;
+    border: 1px solid red;
+}
+
+header {
+    position: absolute;
+    z-index:2;
+    margin-left: 60px;
+    width: 210px;
+    height: 589px;
+    background: rgba(255,255,255,0.9);
+    color: grey;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+    a {
+        color: grey;
+        text-decoration: none;
+    }
 }
 
 img {
     float: left;
     max-height: 300px;
 }
-
 
 @media (min-width:500px) {
     img {
