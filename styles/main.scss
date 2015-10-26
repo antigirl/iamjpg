@@ -1,58 +1,61 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+    background: grey;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
 body {
-    background: #fff;
     font-family: Helvetica;
     font-size: 14px;
+    background: #fff;
+    overflow: hidden;
 }
 
 .wrapper {
+    white-space: nowrap;
     position: relative;
-    height: 550px;
     width: 100%;
-    margin-top: 100px;
-}
+    height: 200px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 
-.photo-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: scroll;
-}
-
-.photo-container {
-    width: 100%;
-}
-
-header {
-    position: absolute;
-    z-index:2;
-    margin-left: 60px;
-    width: 210px;
-    height: 550px;
-    background: rgba(255,255,255,0.9);
-    color: grey;
-}
-header {
-    padding: 20px;
-}
-
-nav ul li {
-    margin-bottom: 10px;
-    a {
-        color: grey;
+    li {
+        height: 100%;
+        width: auto;
+        display: inline-block;
     }
 }
 
 img {
-    float: left;
-    max-height: 300px;
     margin-right: 3px;
-
-    &:first-child {
-        margin-left: 270px;
-    }
+    width: auto;
+    height: 100%;
 }
 
-@media (min-width:700px) {
-    img {
-        max-height: 100%;
+header {
+    width: 100%;
+    height: 10px;
+    background: #fff;
+    padding: 10px;
+}
+
+nav ul li {
+    float: right;
+    margin-right: 10px;
+}
+
+@media screen and (min-device-width: 569px) and (min-width: 569px) {
+    .wrapper {
+        height: 589px;
+        background:black;
     }
 }

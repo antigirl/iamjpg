@@ -14,11 +14,20 @@ var loadImage = function() {
 }
 
 function init() {
-    addEventListener('DOMContentLoaded', loadImage, false);
-    //addEventListener('load', debounce(loadImage, 1000), false);
-    addEventListener('scroll', debounce(loadImage, 50), false);
-    addEventListener('resize', debounce(loadImage, 50), false);
-    document.getElementsByClassName('photo-wrapper')[0].addEventListener('scroll', debounce(loadImage, 50), false);
+    document.body.addEventListener('touchmove',function(e){
+        if(event.target.parentNode.parentNode.className.indexOf('wrapper') === -1) {
+           e.preventDefault();
+       } else {
+           return true;
+       }
+     });
+
+    // addEventListener('DOMContentLoaded', loadImage, false);
+    // //addEventListener('load', debounce(loadImage, 1000), false);
+    // addEventListener('scroll', debounce(loadImage, 10), false);
+    // addEventListener('resize', debounce(loadImage, 10), false);
+    // document.getElementsByClassName('photo-wrapper')[0].addEventListener('scroll', debounce(loadImage, 10), false);
+    //http://stackoverflow.com/questions/10238084/ios-safari-how-to-disable-overscroll-but-allow-scrollable-divs-to-scroll-norma
 }
 
 module.exports = {
