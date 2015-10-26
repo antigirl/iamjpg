@@ -14,10 +14,13 @@ var loadImage = function() {
 }
 
 function init() {
-    addEventListener('DOMContentLoaded', loadImage, false);
-    //addEventListener('load', debounce(loadImage, 1000), false);
-    addEventListener('scroll', debounce(loadImage, 10), false);
-    addEventListener('resize', debounce(loadImage, 10), false);
+    setTimeout(function () {
+        loadImage();
+    }, 40);
+    document.addEventListener('DOMContentLoaded', debounce(loadImage, 4), false);
+    document.addEventListener('load', loadImage, false);
+    document.addEventListener('scroll', debounce(loadImage, 10), false);
+    document.addEventListener('resize', debounce(loadImage, 10), false);
     document.getElementsByClassName('photo-wrapper')[0].addEventListener('scroll', debounce(loadImage, 10), false);
 }
 

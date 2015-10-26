@@ -101,6 +101,7 @@ gulp.task('images-mobile', function() {
 
 
 gulp.task('default', ['connect','metalsmith:watch', 'html:watch','sass:watch','scripts:watch']);
+gulp.task('build-content', ['metalsmith','sass','scripts']);
 gulp.task('build', ['images-min','images-mobile','images-lqt','metalsmith','sass','scripts']);
 gulp.task('images', ['images-min','images-mobile','images-lqt']);
 
