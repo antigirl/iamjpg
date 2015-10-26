@@ -103,3 +103,16 @@ gulp.task('images-mobile', function() {
 gulp.task('default', ['connect','metalsmith:watch', 'html:watch','sass:watch','scripts:watch']);
 gulp.task('build', ['images-min','images-mobile','images-lqt','metalsmith','sass','scripts']);
 gulp.task('images', ['images-min','images-mobile','images-lqt']);
+
+
+/*
+get photos
+
+Array.prototype.slice.call(document.getElementsByClassName('iamjpg')).forEach(function(el) {
+ var src = el.getAttribute('src');
+var alt = el.getAttribute('alt');
+var mobile = src.replace('lqt', 'mobile');
+var photos = src.replace('lqt', 'photos');
+console.log('<li><img src="'+ src +'" alt="'+alt+'"class="iamjpg" sizes="(min-width:668px) 589px, 482px" data-srcset="'+ mobile +' 482w, '+ photos +' 589w"></li>');
+});
+*/
