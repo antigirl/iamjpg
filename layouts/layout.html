@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-        <title>iamjpg | {{ title }}</title>
-        <link rel="stylesheet" href="styles/styles.css" />
-    </head>
 
-    <body>
-        <header>
-            <nav>
-              <ul>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>iamjpg | {{ title }}</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+</head>
+
+<body>
+    <header>
+        <h1>
+            iamjpg
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="latest.html">Latest</a></li>
+                <li><a href="printed.html">Printed</a></li>
+                <li><a href="places.html">Places</a></li>
+                <li><a href="faces.html">Faces</a></li>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="olympus.html">Olympus</a></li>
-              </ul>
-            </nav>
-        </header>
-        <ul class="photo-wrapper">
-            {{{ contents }}}
-        </ul>
+            </ul>
+            <button class="mobile-menu" href="#"></button>
+        </nav>
+    </header>
 
-        <script src="scripts/index.js"></script>
-    </body>
+    <ul class="photo-wrapper">
+        {{{ contents }}}
+    </ul>
+
+    <script src="scripts/index.js"></script>
+</body>
+
 </html>
