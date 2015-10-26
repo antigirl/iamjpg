@@ -14,7 +14,6 @@ var fs = require('fs');
 var path = require('path');
 
 var Metalsmith = require('metalsmith');
-var templates = require('metalsmith-templates');
 var layouts = require('metalsmith-layouts');
 
 
@@ -83,7 +82,6 @@ function updateImageWidths(theFile) {
           imagesArray.forEach(function (el, i) {
               var imagePath = el.getAttribute('src').replace('dist/', '').replace('lqt/', '');
               totalWidth += sizeOf(imagePath).width + imageMarginRight;
-              console.log(imagePath + ' =>'+ sizeOf(imagePath).width);
           });
           var data = fs.readFileSync(theFile, 'utf-8');
           var newValue = data.replace(/containerWidth: .*/, 'containerWidth: ' + parseInt(totalWidth + marginLeftFirst));
