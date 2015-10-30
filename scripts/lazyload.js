@@ -7,7 +7,7 @@ var imagesArray = Array.prototype.slice.call(document.getElementsByClassName('ia
 var loadImage = function() {
     imagesArray.forEach(function (el) {
         if(isElementVisible(el)) {
-            console.log(el.src,  '=> ', isElementVisible(el));
+            //console.log(el.src,  '=> ', isElementVisible(el));
             respond.setSrc(el);
         }
 	});
