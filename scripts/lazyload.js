@@ -15,7 +15,7 @@ var loadImage = function() {
 
 function init() {
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('document content loaded');
+        //console.log('document content loaded');
         loadImage();
     }, false);
     document.addEventListener('resize', debounce(loadImage, 10), false);

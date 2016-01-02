@@ -6,6 +6,6 @@ actions.init();
 var photoWrapper = document.getElementsByClassName('photo-wrapper')[0];
 
 window.addEventListener('resize', function () {
-    console.log('resizing,', window.innerHeight);
+    //console.log('resizing,', window.innerHeight);
     photoWrapper.style.height = window.innerHeight + 'px';
 });
