@@ -48,6 +48,8 @@ module.exports.setSrc = function(imgEl) {
             imgEl.src = srcMap[sizeMap.store[1]];
         }
     }
-    imgEl.parentElement.classList.add('loaded');
 
+    setTimeout(function () {
+        imgEl.parentElement.classList.add('loaded');
+    }, 100);
 }

@@ -5,8 +5,10 @@ var respond = require('./respond');
 var imagesArray = Array.prototype.slice.call(document.getElementsByClassName('iamjpg'), '');
 
 var loadImage = function() {
-    imagesArray.forEach(function (el) {
-        if(isElementVisible(el)) {
+    imagesArray.forEach(function (el, i) {
+        if (i < 3) {
+            respond.setSrc(el);
+        } else if(isElementVisible(el)) {
             //console.log(el.src,  '=> ', isElementVisible(el));
             respond.setSrc(el);
         }
@@ -15,7 +17,6 @@ var loadImage = function() {
 
 function init() {
     document.addEventListener('DOMContentLoaded', function() {
-        //console.log('document content loaded');
         loadImage();
     }, false);
     document.addEventListener('resize', debounce(loadImage, 10), false);
