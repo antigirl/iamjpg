@@ -39,7 +39,7 @@ function getImageSrc(imgEl) {
 module.exports.setSrc = function(imgEl) {
     var srcMap = getImageSrc(imgEl);
     var sizeMap = getImageSizes(imgEl);
-    if (isSrcsetSupported()) {
+    if (isSrcsetSupported()) {;
         imgEl.srcset = srcMap;
     } else {
         if (sizeMap.mediaQueryMatch) {
